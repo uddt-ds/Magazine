@@ -23,25 +23,6 @@ class MagazineTableViewCell: UITableViewCell {
         setupDateLabel()
     }
 
-    func configureCell(_ data: Magazine) {
-        mainLabel.text = data.title
-        subLabel.text = data.subTitle
-
-        let dateData = data.date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYMMdd"
-        if let dateData = dateFormatter.date(from: dateData) {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "YY년 MM월 dd일"
-            let date = formatter.string(from: dateData)
-            dateLabel.text = date
-        }
-
-        let url = URL(string: data.photoImage)
-        designImageViewUI()
-        magazineImageView.kf.setImage(with: url)
-    }
-
     private func setupMainLabel() {
         designLabelUI(mainLabel, font: .boldSystemFont(ofSize: 20), color: .black, lines: 0)
     }
@@ -65,4 +46,24 @@ class MagazineTableViewCell: UITableViewCell {
         magazineImageView.layer.cornerRadius = 16
         magazineImageView.clipsToBounds = true
     }
+
+    func configureCell(_ data: Magazine) {
+        mainLabel.text = data.title
+        subLabel.text = data.subTitle
+
+        let dateData = data.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYMMdd"
+        if let dateData = dateFormatter.date(from: dateData) {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YY년 MM월 dd일"
+            let date = formatter.string(from: dateData)
+            dateLabel.text = date
+        }
+
+        let url = URL(string: data.photoImage)
+        designImageViewUI()
+        magazineImageView.kf.setImage(with: url)
+    }
+
 }

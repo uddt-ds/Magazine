@@ -15,11 +15,13 @@ final class MagazineTableViewController: UITableViewController {
         super.viewDidLoad()
         setupNavigationBar()
         designTableViewUI()
+        tableView.rowHeight = 440
     }
 
     private func setupNavigationBar() {
         let title = "SeSAC TRAVEL"
         navigationItem.title = title
+        navigationController?.navigationBar.scrollEdgeAppearance = .init()
     }
 
     private func designTableViewUI() {
@@ -40,7 +42,7 @@ final class MagazineTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 440
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 440
+//    }
 }
