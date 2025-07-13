@@ -51,8 +51,8 @@ final class ThreeSixViewController: UIViewController {
 
     private func designButtonUI() {
         resetButton.setTitle("초기화", for: .normal)
-        resetButton.setTitleColor(.white, for: .normal)
-        resetButton.backgroundColor = .red
+        resetButton.setTitleColor(.black, for: .normal)
+        resetButton.backgroundColor = UIColor(red: 255/255, green: 211/255, blue: 211/255, alpha: 1.0)
         resetButton.layer.cornerRadius = 12
         resetButton.clipsToBounds = true
     }
