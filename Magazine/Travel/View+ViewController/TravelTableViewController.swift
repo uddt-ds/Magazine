@@ -40,7 +40,7 @@ final class TravelTableViewController: UITableViewController {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "adCell", for: indexPath) as? AdCell else { return .init() }
 
-            let adColors: [UIColor] = [.systemPink, .systemCyan, .systemOrange]
+            let adColors: [UIColor] = [.paseutelPink, .paseutelGreen, .paseutelBlue]
             let index = adIndex(indexPath)
             cell.adCellBgView.backgroundColor = adColors[index]
 
@@ -49,6 +49,8 @@ final class TravelTableViewController: UITableViewController {
         }
     }
 
+
+//    // 섹션으로 분기할 때는 아래의 방법으로도 가능
 //        switch indexPath.section {
 //        case 0:
 //            guard let cell = tableView.dequeueReusableCell(withIdentifier: "travelCell", for: indexPath) as? TravelCell else { return .init() }
@@ -72,6 +74,8 @@ final class TravelTableViewController: UITableViewController {
 //            return UITableViewCell()
 //        }
 
+
+//    // 광고 셀의 인덱스가 맞지 않아서 분기처리 해보려 했으나, 아래 방법으로 불가능
 //        var num = indexPath.row
 //
 //        if dataManager.travelInfo.travel[indexPath.row].ad == true {
@@ -80,9 +84,6 @@ final class TravelTableViewController: UITableViewController {
 //            cell.likeButton.tag = num
 //        }
 
-//    }
-
-    // 광고가 있는 인덱스가 어디인지 먼저 찾아야 함
     private func adIndex(_ indexPath: IndexPath) -> Int {
         let totalData = dataManager.travelInfo.travel
         let adData = totalData.filter { $0.ad == true }

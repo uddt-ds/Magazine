@@ -15,11 +15,14 @@ final class ThreeSixViewController: UIViewController {
     @IBOutlet var resultTextView: UITextView!
     @IBOutlet var resultLabel: UILabel!
     
+    @IBOutlet var resetButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         designTextFieldUI()
         designTextViewUI()
         designLabelUI()
+        designButtonUI()
         setupTextViewResult()
     }
 
@@ -39,11 +42,19 @@ final class ThreeSixViewController: UIViewController {
     }
 
     private func designLabelUI() {
-        resultLabel.text = "숫자 입력 대기중"
-        resultLabel.font = .boldSystemFont(ofSize: 30)
+        resultLabel.text = "숫자 입력 대기중.."
+        resultLabel.font = .boldSystemFont(ofSize: 24)
         resultLabel.textColor = .black
         resultLabel.textAlignment = .center
         resultLabel.numberOfLines = 0
+    }
+
+    private func designButtonUI() {
+        resetButton.setTitle("초기화", for: .normal)
+        resetButton.setTitleColor(.white, for: .normal)
+        resetButton.backgroundColor = .red
+        resetButton.layer.cornerRadius = 12
+        resetButton.clipsToBounds = true
     }
 
 //    private func getResult(_ input: String) -> [String] {
@@ -71,10 +82,17 @@ final class ThreeSixViewController: UIViewController {
 //        return strArr
 //    }
 
+
     private func checkContainsMultipleThree(_ input: String) -> [String] {
         clapCount = 0
 
         let number = Int(input) ?? 0
+
+        guard number > 0 && number <= 100 else {
+            showAlert("1 ~ 100까지의 숫자만 입력해주세요")
+            return []
+        }
+
         let numberRange = Range(1...number)
         var numberArr = [Int]()
         numberArr.append(contentsOf: numberRange)
@@ -114,10 +132,26 @@ final class ThreeSixViewController: UIViewController {
         }
     }
 
+    private func showAlert(_ title: String) {
+        let alert = UIAlertController(title: "경고", message: title, preferredStyle: .alert)
+        let action = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+
 
     @IBAction func textFieldEndExit(_ sender: UITextField) {
         setupTextViewResult()
     }
     
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
 
+    @IBAction func resetButtonTapped(_ sender: UIButton) {
+        clapCount = 0
+        resultLabel.text = "숫자 입력 대기중.."
+        resultTextView.text = ""
+        numberTextField.text = ""
+    }
 }

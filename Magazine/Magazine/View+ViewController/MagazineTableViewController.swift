@@ -15,6 +15,7 @@ final class MagazineTableViewController: UITableViewController {
         super.viewDidLoad()
         setupNavigationBar()
         designTableViewUI()
+        setupTabBar()
         tableView.rowHeight = 440
     }
 
@@ -40,6 +41,10 @@ final class MagazineTableViewController: UITableViewController {
         cell.configureCell(magazineData.magazine[indexPath.row])
 
         return cell
+    }
+
+    private func setupTabBar() {
+        tabBarController?.tabBar.tintColor = .black
     }
 
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -27,9 +27,9 @@ class AdCell: UITableViewCell {
     }
 
     private func designAdButton() {
-        adButton.titleLabel?.text = "AD"
+        adButton.setTitle("AD", for: .normal)
+        adButton.setTitleColor(.black, for: .normal)
         adButton.titleLabel?.font = .systemFont(ofSize: 11)
-        adButton.titleLabel?.textColor = .black
         adButton.isUserInteractionEnabled = false
         adButton.backgroundColor = .white
         adButton.layer.cornerRadius = 10
@@ -44,9 +44,5 @@ class AdCell: UITableViewCell {
 
     func configureLabel(_ data: Travel) {
         adCellLabel.text = data.title
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
     }
 }

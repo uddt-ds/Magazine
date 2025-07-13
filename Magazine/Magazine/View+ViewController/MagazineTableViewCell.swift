@@ -65,5 +65,4 @@ class MagazineTableViewCell: UITableViewCell {
         designImageViewUI()
         magazineImageView.kf.setImage(with: url)
     }
-
 }

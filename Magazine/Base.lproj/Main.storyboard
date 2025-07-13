@@ -156,29 +156,53 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXs-Zl-GiG">
+                                <rect key="frame" x="157" y="586" width="88" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="ABl-Ck-yYq"/>
+                                    <constraint firstAttribute="height" constant="44" id="Ywl-45-uk4"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="1Fj-Fr-qgq" eventType="touchUpInside" id="O12-RD-owS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Sla-nX-rbk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="bl6-ui-gSD" firstAttribute="leading" secondItem="Sla-nX-rbk" secondAttribute="leading" constant="48" id="A8M-os-jVr"/>
                             <constraint firstItem="Sla-nX-rbk" firstAttribute="trailing" secondItem="5YO-wr-s5f" secondAttribute="trailing" constant="48" id="IOF-ZF-y8X"/>
+                            <constraint firstItem="zXs-Zl-GiG" firstAttribute="top" secondItem="bl6-ui-gSD" secondAttribute="bottom" constant="30" id="J8g-dJ-d6O"/>
                             <constraint firstItem="J7Q-Cq-Sap" firstAttribute="top" secondItem="5YO-wr-s5f" secondAttribute="bottom" constant="40" id="PYf-OQ-8NN"/>
                             <constraint firstItem="Sla-nX-rbk" firstAttribute="trailing" secondItem="J7Q-Cq-Sap" secondAttribute="trailing" constant="48" id="VCG-UN-ZZ1"/>
                             <constraint firstItem="5YO-wr-s5f" firstAttribute="leading" secondItem="Sla-nX-rbk" secondAttribute="leading" constant="48" id="aM7-sJ-Dst"/>
                             <constraint firstItem="Sla-nX-rbk" firstAttribute="trailing" secondItem="bl6-ui-gSD" secondAttribute="trailing" constant="48" id="ly3-WR-Zeq"/>
                             <constraint firstItem="5YO-wr-s5f" firstAttribute="top" secondItem="Sla-nX-rbk" secondAttribute="top" constant="24" id="ni2-GM-EW4"/>
+                            <constraint firstItem="zXs-Zl-GiG" firstAttribute="centerX" secondItem="bl6-ui-gSD" secondAttribute="centerX" id="rJm-1A-XKi"/>
                             <constraint firstItem="J7Q-Cq-Sap" firstAttribute="leading" secondItem="Sla-nX-rbk" secondAttribute="leading" constant="48" id="w0Y-93-fBB"/>
                             <constraint firstItem="bl6-ui-gSD" firstAttribute="top" secondItem="J7Q-Cq-Sap" secondAttribute="bottom" constant="40" id="yxY-EC-yAK"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="A8P-cZ-ayq" appends="YES" id="FV5-Vg-gQo"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="3, 6, 9" image="3.circle.fill" catalog="system" id="tmC-n0-gRh"/>
                     <connections>
                         <outlet property="numberTextField" destination="5YO-wr-s5f" id="lZL-UK-qqs"/>
+                        <outlet property="resetButton" destination="zXs-Zl-GiG" id="Rqu-e3-uVt"/>
                         <outlet property="resultLabel" destination="bl6-ui-gSD" id="50N-wI-4vj"/>
                         <outlet property="resultTextView" destination="J7Q-Cq-Sap" id="wCR-wl-htu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFW-vB-j86" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="A8P-cZ-ayq">
+                    <connections>
+                        <action selector="viewTapped:" destination="1Fj-Fr-qgq" id="Gb4-yc-DC2"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2101.4925373134329" y="767.50572082379858"/>
         </scene>
@@ -332,8 +356,7 @@
                                                         <constraint firstAttribute="height" constant="20" id="6zu-lv-dQU"/>
                                                         <constraint firstAttribute="width" constant="40" id="JaZ-5S-63u"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grj-ih-Z3j">
                                                     <rect key="frame" x="24" y="28" width="322" height="50"/>

@@ -27,8 +27,8 @@ struct Travel {
         self.ad = ad
     }
 
-    mutating func changeValue() {
-        self.like?.toggle()
-    }
+//    mutating func changeValue() {
+//        self.like?.toggle()
+//    }
 }
 
