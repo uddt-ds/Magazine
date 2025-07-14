@@ -17,6 +17,9 @@ final class MagazineTableViewController: UITableViewController {
         designTableViewUI()
         setupTabBar()
         tableView.rowHeight = 440
+
+        let xib = UINib(nibName: "MagazineCell", bundle: nil)
+        tableView.register(xib, forCellReuseIdentifier: "MagazineCell")
     }
 
     private func setupNavigationBar() {
@@ -36,7 +39,7 @@ final class MagazineTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "magazineCell", for: indexPath) as? MagazineTableViewCell else { return .init() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MagazineCell", for: indexPath) as? MagazineCell else { return .init() }
 
         cell.configureCell(magazineData.magazine[indexPath.row])
 

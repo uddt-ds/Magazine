@@ -15,6 +15,12 @@ final class TravelTableViewController: UITableViewController {
         super.viewDidLoad()
         setupNavigationBar()
 //        tableView.rowHeight = 156
+
+        let xib = UINib(nibName: "TravelCell", bundle: nil)
+        tableView.register(xib, forCellReuseIdentifier: "TravelCell")
+
+        let xibAdCell = UINib(nibName: "AdCell", bundle: nil)
+        tableView.register(xibAdCell, forCellReuseIdentifier: "AdCell")
     }
 
     private func setupNavigationBar() {
@@ -31,14 +37,15 @@ final class TravelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        print(#function, "\(indexPath.row)")
         if dataManager.travelInfo.travel[indexPath.row].ad == false {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "travelCell", for: indexPath) as? TravelCell else { return .init() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for: indexPath) as? TravelCell else { return .init() }
             cell.configureCell(dataManager.travelInfo.travel[indexPath.row])
 
             cell.likeButton.tag = indexPath.row
+            cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
 
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "adCell", for: indexPath) as? AdCell else { return .init() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AdCell", for: indexPath) as? AdCell else { return .init() }
 
             let adColors: [UIColor] = [.paseutelPink, .paseutelGreen, .paseutelBlue]
             let index = adIndex(indexPath)
