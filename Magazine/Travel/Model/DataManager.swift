@@ -12,7 +12,7 @@ struct DataManager {
 
     var travelData: [Travel] {
         get {
-            return travelInfo.travel.filter { $0.ad == false }
+            return travelInfo.travel.filter { !$0.ad }
         }
     }
 

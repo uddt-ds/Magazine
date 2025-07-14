@@ -16,6 +16,8 @@ class MagazineTableViewCell: UITableViewCell {
     @IBOutlet var subLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
 
+    let dateFormatter = DateFormatter()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupMainLabel()
@@ -24,17 +26,18 @@ class MagazineTableViewCell: UITableViewCell {
     }
 
     private func setupMainLabel() {
-        designLabelUI(mainLabel, font: .boldSystemFont(ofSize: 20), color: .black, lines: 0)
+        mainLabel.designLabelUI(font: .boldSystemFont(ofSize: 20), color: .black, lines: 0)
     }
 
     private func setupSubLabel() {
-        designLabelUI(subLabel, font: .systemFont(ofSize: 14), color: .gray)
+        subLabel.designLabelUI(font: .systemFont(ofSize: 14), color: .gray)
     }
 
     private func setupDateLabel() {
-        designLabelUI(dateLabel, font: .systemFont(ofSize: 12), color: .gray)
+        dateLabel.designLabelUI(font: .systemFont(ofSize: 12), color: .gray)
     }
 
+    //TODO : Extension으로 빼기
     private func designLabelUI(_ label: UILabel, font: UIFont, color: UIColor, lines: Int = 1) {
         label.font = font
         label.textColor = color
@@ -51,8 +54,8 @@ class MagazineTableViewCell: UITableViewCell {
         mainLabel.text = data.title
         subLabel.text = data.subTitle
 
+        // TODO: dataFormatter는 cell에서 계속 생성하는게 맞을까?
         let dateData = data.date
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYMMdd"
         if let dateData = dateFormatter.date(from: dateData) {
             let formatter = DateFormatter()

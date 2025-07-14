@@ -45,6 +45,7 @@ final class TravelTableViewController: UITableViewController {
             cell.adCellBgView.backgroundColor = adColors[index]
 
             cell.configureLabel(dataManager.travelInfo.travel[indexPath.row])
+            cell.separatorInset = .init(top: 0, left: 0, bottom: 0, right: 0)
             return cell
         }
     }

@@ -102,16 +102,13 @@ final class TravelCell: UITableViewCell {
 
         mainLabel.text = data.title
         subLabel.text = data.description
-        guard let grade = data.grade else { return }
-        setupImage(grade: grade)
+        setupImage(grade: data.gradeNumber)
 
-        if let travelImage = data.travelImage, let url = URL(string: travelImage) {
+        if let url = URL(string: data.urlString) {
             travelImageView.kf.setImage(with: url)
         }
 
-        guard let dotSave = data.save?.formatted(.number) else { return }
-        
-        countLabel.text = "(\(data.grade ?? 0)) • 저장 \(String(describing: dotSave))"
+        countLabel.text = "\(data.gradeDescription) • 저장 \(data.saveDescription)"
 
         if data.like == true {
             likeButton.setImage(heartFillImage, for: .normal)

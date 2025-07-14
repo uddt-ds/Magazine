@@ -7,6 +7,12 @@
 
 import UIKit
 
+/*
+ CustomTextField에 pasteBlocked 프로퍼티를 false로 초기화
+ isPasteBlocked는 get 할 때 false고,
+
+ */
+
 class CustomTextField: UITextField {
 
     private var pasteBlocked: Bool = false

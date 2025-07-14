@@ -31,6 +31,7 @@ final class ThreeSixViewController: UIViewController {
         numberTextField.placeholder = placeholder
         numberTextField.textAlignment = .center
         numberTextField.borderStyle = .line
+        numberTextField.keyboardType = .numbersAndPunctuation
         numberTextField.font = .systemFont(ofSize: 18)
     }
 
@@ -88,8 +89,8 @@ final class ThreeSixViewController: UIViewController {
 
         let number = Int(input) ?? 0
 
-        guard number > 0 && number <= 100 else {
-            showAlert("1 ~ 100까지의 숫자만 입력해주세요")
+        guard number > 0 && number <= 100000 else {
+            showAlert("1 ~ 100,000까지의 숫자만 입력해주세요")
             return []
         }
 
@@ -100,6 +101,13 @@ final class ThreeSixViewController: UIViewController {
         var strArr = [String]()
         strArr = numberArr.map { String($0) }
         var resultArr = [String]()
+
+
+        // 100 입력했을 때, 0.00017404초
+        // 1000 입력했을 때, 0.00213301초
+        // 10000 입력했을 때, 0.0105509초
+        // 100000 입력했을 때, 0.0498399초
+
         for str in strArr {
             let result = changeText(text: str)
             resultArr.append(result)
