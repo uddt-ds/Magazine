@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class TravelCell: UITableViewCell {
 
@@ -40,7 +41,7 @@ final class TravelCell: UITableViewCell {
     }
 
     private func setupSubLabel() {
-        designLabelUI(subLabel, font: .systemFont(ofSize: 16), color: .gray, lines: 0)
+        designLabelUI(subLabel, font: .systemFont(ofSize: 14), color: .gray, lines: 0)
     }
 
     private func designStackImageUI() {
@@ -104,8 +105,15 @@ final class TravelCell: UITableViewCell {
         subLabel.text = data.description
         setupImage(grade: data.gradeNumber)
 
+        let processor = DownsamplingImageProcessor(size: travelImageView.bounds.size)
+
         if let url = URL(string: data.urlString) {
-            travelImageView.kf.setImage(with: url)
+            travelImageView.kf.indicatorType = .activity
+            travelImageView.kf.setImage(with: url, options: [
+                .processor(processor),
+                .scaleFactor(UIScreen.main.scale),
+                .cacheOriginalImage
+            ])
         }
 
         countLabel.text = "\(data.gradeDescription) • 저장 \(data.saveDescription)"

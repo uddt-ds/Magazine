@@ -58,39 +58,14 @@ final class ThreeSixViewController: UIViewController {
         resetButton.clipsToBounds = true
     }
 
-//    private func getResult(_ input: String) -> [String] {
-//        let number = Int(input) ?? 0
-//        let numberRange = Range(1...number)
-//        var numberArr = [Int]()
-//        numberArr.append(contentsOf: numberRange)
-//
-//        var multipleThreeArr = [Int]()
-//
-//        for num in numberArr {
-//            if num.isMultiple(of: 3) {
-//                multipleThreeArr.append(num)
-//            }
-//        }
-//
-//        var strArr = [String]()
-//        strArr = numberArr.map { String($0) }
-//
-//        multipleThreeArr.forEach { strArr[$0 - 1] = "👏" }
-//
-//        let clapCount = multipleThreeArr.count
-//        resultLabel.text = "숫자 \(number)까지 \n총 박수는 \(clapCount)번 입니다."
-//
-//        return strArr
-//    }
-
-
     private func checkContainsMultipleThree(_ input: String) -> [String] {
         clapCount = 0
 
         let number = Int(input) ?? 0
 
         guard number > 0 && number <= 100000 else {
-            showAlert("1 ~ 100,000까지의 숫자만 입력해주세요")
+            let alertMessage = "1 ~ 100,000까지의 숫자만 입력해주세요"
+            showAlert(title: "경고", msg: alertMessage, style: .alert)
             return []
         }
 
@@ -139,14 +114,6 @@ final class ThreeSixViewController: UIViewController {
             resultTextView.text = joinedText
         }
     }
-
-    private func showAlert(_ title: String) {
-        let alert = UIAlertController(title: "경고", message: title, preferredStyle: .alert)
-        let action = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
-
 
     @IBAction func textFieldEndExit(_ sender: UITextField) {
         setupTextViewResult()

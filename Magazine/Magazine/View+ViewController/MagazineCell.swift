@@ -37,13 +37,6 @@ class MagazineCell: UITableViewCell {
         dateLabel.designLabelUI(font: .systemFont(ofSize: 12), color: .gray)
     }
 
-    //TODO : Extension으로 빼기
-    private func designLabelUI(_ label: UILabel, font: UIFont, color: UIColor, lines: Int = 1) {
-        label.font = font
-        label.textColor = color
-        label.numberOfLines = lines
-    }
-
     private func designImageViewUI() {
         magazineImageView.contentMode = .scaleAspectFill
         magazineImageView.layer.cornerRadius = 16
@@ -54,13 +47,11 @@ class MagazineCell: UITableViewCell {
         mainLabel.text = data.title
         subLabel.text = data.subTitle
 
-        // TODO: dataFormatter는 cell에서 계속 생성하는게 맞을까?
         let dateData = data.date
         dateFormatter.dateFormat = "YYMMdd"
         if let dateData = dateFormatter.date(from: dateData) {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "YY년 MM월 dd일"
-            let date = formatter.string(from: dateData)
+            dateFormatter.dateFormat = "YY년 MM월 dd일"
+            let date = dateFormatter.string(from: dateData)
             dateLabel.text = date
         }
 

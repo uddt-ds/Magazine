@@ -16,8 +16,7 @@ final class MagazineTableViewController: UITableViewController {
         setupNavigationBar()
         designTableViewUI()
         setupTabBar()
-        tableView.rowHeight = 440
-
+        
         let xib = UINib(nibName: "MagazineCell", bundle: nil)
         tableView.register(xib, forCellReuseIdentifier: "MagazineCell")
     }
@@ -31,7 +30,6 @@ final class MagazineTableViewController: UITableViewController {
     private func designTableViewUI() {
         tableView.separatorStyle = .none
     }
-
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return magazineData.magazine.count
@@ -50,7 +48,7 @@ final class MagazineTableViewController: UITableViewController {
         tabBarController?.tabBar.tintColor = .black
     }
 
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 440
-//    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }

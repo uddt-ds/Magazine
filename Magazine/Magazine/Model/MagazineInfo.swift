@@ -78,7 +78,6 @@ struct MagazineInfo {
                  subtitle: "이제 공항에서 시간 때울 걱정 끝!",
                  photo_image: "https://cdn.pixabay.com/photo/2021/09/07/11/53/car-6603726_1280.jpg",
                  date: "250105",
-                 link: "https://triple.guide/content/articles/791578f3-95d7-4300-a51f-6dff48db5d55"),
-
+                 link: "https://triple.guide/content/articles/791578f3-95d7-4300-a51f-6dff48db5d55")
     ]
 }

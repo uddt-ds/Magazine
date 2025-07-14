@@ -21,6 +21,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbh-1n-4y3">
                                 <rect key="frame" x="322" y="8" width="40" height="20"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="CD1-me-J6X"/>
                                     <constraint firstAttribute="height" constant="20" id="x6G-a5-ZiH"/>
@@ -29,6 +30,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeI-7K-Flc">
                                 <rect key="frame" x="24" y="29" width="322" height="50"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GeI-7K-Flc" secondAttribute="height" multiplier="354:55" id="iMJ-fo-7oP"/>
                                 </constraints>
@@ -38,6 +40,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zbh-1n-4y3" secondAttribute="trailing" constant="8" id="Ahf-mF-f2Y"/>
                             <constraint firstItem="GeI-7K-Flc" firstAttribute="centerY" secondItem="6or-hU-pw9" secondAttribute="centerY" id="BBx-mc-fP9"/>

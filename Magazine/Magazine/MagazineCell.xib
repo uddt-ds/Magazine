@@ -22,19 +22,22 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-kp-3bu">
-                        <rect key="frame" x="44" y="350" width="270" height="20.333333333333314"/>
+                        <rect key="frame" x="44" y="350" width="314" height="78"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcj-dL-fLt">
-                        <rect key="frame" x="336.33333333333331" y="451.66666666666669" width="41.666666666666686" height="20.333333333333314"/>
+                        <rect key="frame" x="316.33333333333331" y="451.66666666666669" width="41.666666666666686" height="20.333333333333314"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tO-oX-DDp">
-                        <rect key="frame" x="44" y="374.33333333333331" width="41.666666666666657" height="20.333333333333314"/>
+                        <rect key="frame" x="44" y="432" width="41.666666666666657" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="eVo-Sz-ocG"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -42,12 +45,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="1tO-oX-DDp" firstAttribute="top" secondItem="Mfo-kp-3bu" secondAttribute="bottom" constant="4" id="0o9-XL-IS7"/>
-                    <constraint firstAttribute="trailing" secondItem="dcj-dL-fLt" secondAttribute="trailing" constant="24" id="HYw-eH-8yP"/>
+                    <constraint firstAttribute="trailing" secondItem="dcj-dL-fLt" secondAttribute="trailing" constant="44" id="HYw-eH-8yP"/>
                     <constraint firstAttribute="trailing" secondItem="wCx-I8-r2m" secondAttribute="trailing" constant="44" id="IA4-2p-J9D"/>
                     <constraint firstAttribute="bottom" secondItem="dcj-dL-fLt" secondAttribute="bottom" constant="12" id="L1F-ob-xM7"/>
                     <constraint firstItem="Mfo-kp-3bu" firstAttribute="leading" secondItem="x1n-c4-fLV" secondAttribute="leading" constant="44" id="VmI-9h-m0l"/>
-                    <constraint firstAttribute="trailing" secondItem="Mfo-kp-3bu" secondAttribute="trailing" constant="88" id="Y4A-rJ-Agq"/>
+                    <constraint firstAttribute="trailing" secondItem="Mfo-kp-3bu" secondAttribute="trailing" constant="44" id="Y4A-rJ-Agq"/>
                     <constraint firstItem="Mfo-kp-3bu" firstAttribute="top" secondItem="wCx-I8-r2m" secondAttribute="bottom" constant="12" id="Ymr-Y7-YSK"/>
+                    <constraint firstAttribute="bottom" secondItem="1tO-oX-DDp" secondAttribute="bottom" constant="32" id="e1o-Ye-GwI"/>
                     <constraint firstItem="wCx-I8-r2m" firstAttribute="leading" secondItem="x1n-c4-fLV" secondAttribute="leading" constant="44" id="lUu-Fc-07K"/>
                     <constraint firstItem="1tO-oX-DDp" firstAttribute="leading" secondItem="x1n-c4-fLV" secondAttribute="leading" constant="44" id="mAl-PK-xcu"/>
                     <constraint firstItem="wCx-I8-r2m" firstAttribute="top" secondItem="x1n-c4-fLV" secondAttribute="top" constant="24" id="njp-s5-7YN"/>
@@ -59,7 +63,7 @@
                 <outlet property="mainLabel" destination="Mfo-kp-3bu" id="ptG-kP-7dK"/>
                 <outlet property="subLabel" destination="1tO-oX-DDp" id="rrn-ew-vor"/>
             </connections>
-            <point key="canvasLocation" x="63" y="47"/>
+            <point key="canvasLocation" x="62.595419847328245" y="46.478873239436624"/>
         </tableViewCell>
     </objects>
 </document>
