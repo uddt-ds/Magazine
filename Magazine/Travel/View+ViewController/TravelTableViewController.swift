@@ -49,7 +49,21 @@ final class TravelTableViewController: UITableViewController {
             let index = adIndex(indexPath)
             cell.adCellBgView.backgroundColor = adColors[index]
             cell.configureLabel(dataManager.travelInfo.travel[indexPath.row])
+
             return cell
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if dataManager.travelInfo.travel[indexPath.row].ad == false {
+            let sb = UIStoryboard(name: TravelDetailViewController.identifier, bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: TravelDetailViewController.identifier) as! TravelDetailViewController
+
+            vc.view.backgroundColor = .white
+            vc.configureUI(with: dataManager.travelInfo.travel[indexPath.row])
+            navigationController?.navigationBar.tintColor = .black
+            navigationController?.navigationBar.topItem?.title = ""
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 
