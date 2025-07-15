@@ -52,6 +52,10 @@ class CountryTableViewController: UITableViewController {
         segMenu.insertSegment(withTitle: "해외", at: 2, animated: true)
     }
 
+    private func setupTableViewSeperator() {
+        tableView.separatorStyle = .none
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentData.count
     }
