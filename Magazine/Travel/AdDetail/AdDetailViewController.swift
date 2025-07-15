@@ -9,43 +9,36 @@ import UIKit
 
 class AdDetailViewController: UIViewController {
 
-    @IBOutlet var topBarBgView: UIView!
     @IBOutlet var adDetailLabel: UILabel!
-    @IBOutlet var topLabel: UILabel!
-    @IBOutlet var closeButton: UIButton!
-    @IBOutlet var navigationUnderLine: UIView!
+
+    var adDetailTitle: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabel()
-        setupButton()
-        setupUnderLine()
+        setupAdLabel()
+        setupNav()
     }
 
     private func setupLabel() {
-        let title = "광고 화면"
-        topLabel.designLabelUI(font: .boldSystemFont(ofSize: 18), color: .black)
-        topLabel.text = title
-        adDetailLabel.designLabelUI(font: .boldSystemFont(ofSize: 20), color: .black, lines: 0)
+        adDetailLabel.designLabelUI(font: .boldSystemFont(ofSize: 24), color: .black, lines: 0)
         adDetailLabel.textAlignment = .center
     }
 
-    private func setupButton() {
-        let closeImage = UIImage(systemName: "xmark")
-        closeButton.setImage(closeImage, for: .normal)
-        closeButton.tintColor = .black
+    private func setupNav() {
+        let image = UIImage(systemName: "xmark")
+        let leftItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(closeButtonTapped))
+        navigationItem.leftBarButtonItem = leftItem
+        navigationItem.leftBarButtonItem?.tintColor = .black
+
+        navigationItem.title = "광고 화면"
     }
 
-    private func setupUnderLine() {
-        navigationUnderLine.backgroundColor = .gray
+    private func setupAdLabel() {
+        adDetailLabel.text = adDetailTitle
     }
 
-    func configureUI(with data: Travel) {
-        adDetailLabel.text = data.title
-    }
-
-    @IBAction func closeButtonTapped(_ sender: UIButton) {
+    @objc func closeButtonTapped() {
         dismiss(animated: true)
     }
-    
 }

@@ -11,6 +11,14 @@ final class TravelDetailViewController: UIViewController {
 
     static let identifier = "TravelDetailViewController"
 
+    var data: Travel = .init(title: "",
+                             description: "",
+                             travel_image: "",
+                             grade: 0.0,
+                             save: 0,
+                             like: false,
+                             ad: false)
+
     @IBOutlet var detailStackView: UIStackView!
     @IBOutlet var detailImageView: UIImageView!
     @IBOutlet var mainLabel: UILabel!
@@ -24,6 +32,7 @@ final class TravelDetailViewController: UIViewController {
         designDetailImageView()
         setupLabel()
         designButton()
+        configureUI()
     }
 
     private func setupNavigation() {
@@ -58,7 +67,7 @@ final class TravelDetailViewController: UIViewController {
         findButton.clipsToBounds = true
     }
 
-    func configureUI(with data: Travel) {
+    func configureUI() {
         if let url = URL(string: data.urlString) {
             detailImageView.kf.indicatorType = .activity
             detailImageView.kf.setImage(with: url)

@@ -7,6 +7,8 @@
 
 import Foundation
 
+//Todo: raw한 모델만 써야할까?
+//모델을 여러개 정의하고 고차함수를 써서 사용할 수 있지 않을까?
 struct Travel {
     let title: String
     let description: String?

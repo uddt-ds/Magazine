@@ -55,12 +55,11 @@ final class TravelTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = dataManager.travelInfo.travel[indexPath.row]
         if dataManager.travelInfo.travel[indexPath.row].ad == false {
             let sb = UIStoryboard(name: TravelDetailViewController.identifier, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: TravelDetailViewController.identifier) as! TravelDetailViewController
-
-            vc.view.backgroundColor = .white
-            vc.configureUI(with: dataManager.travelInfo.travel[indexPath.row])
+            vc.data = data
             navigationController?.navigationBar.tintColor = .black
             navigationController?.navigationBar.topItem?.title = ""
             navigationController?.pushViewController(vc, animated: true)
@@ -69,11 +68,25 @@ final class TravelTableViewController: UITableViewController {
             let sb = UIStoryboard(name: id, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: id) as! AdDetailViewController
 
-            vc.view.backgroundColor = .white
-            vc.configureUI(with: dataManager.travelInfo.travel[indexPath.row])
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            vc.adDetailTitle = data.title
+
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            nav.navigationBar.scrollEdgeAppearance = .init()
+            let leftBarButton = UIBarButtonItem(title: "1", style: .plain, target: nil, action: nil)
+            nav.navigationItem.leftBarButtonItem = leftBarButton
+            present(nav, animated: true)
         }
+    }
+
+//    private func setupNavItem(nav: UINavigationController) {
+//        let image = UIImage(systemName: "xmark")
+//        let barButtonItem =
+//        nav.navigationItem.leftBarButtonItem = barButtonItem
+//    }
+
+    @objc func xmarkTapped() {
+        dismiss(animated: true)
     }
 
     private func adIndex(_ indexPath: IndexPath) -> Int {

@@ -13,6 +13,8 @@ class AdCell: UITableViewCell {
     @IBOutlet var adCellLabel: UILabel!
     @IBOutlet var adButton: UIButton!
 
+    let adTitle: String = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         designBgView()

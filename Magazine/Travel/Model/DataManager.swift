@@ -11,9 +11,7 @@ struct DataManager {
     var travelInfo = TravelInfo()
 
     var travelData: [Travel] {
-        get {
-            return travelInfo.travel.filter { !$0.ad }
-        }
+        return travelInfo.travel.filter { !$0.ad }
     }
 
     var adData: [Travel] {
