@@ -101,7 +101,7 @@ class CountryTableViewController: UITableViewController {
         currentData = currentData.filter({
             $0.cityName == nonSpaceKeyword ||
             $0.upperKeyword == nonSpaceKeyword ||
-            $0.cityExplain == nonSpaceKeyword
+            $0.cityExplain.contains(nonSpaceKeyword)
         })
 
         tableView.reloadData()
