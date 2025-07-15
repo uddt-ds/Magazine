@@ -20,8 +20,9 @@ class CountryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        searchTextFieldUI()
-        segmentedMenuUI()
+        setupSearchTextFieldUI()
+        setupSegmentedMenuUI()
+        setupTableViewSeperator()
 
         let nib = UINib(nibName: String(describing: CountryTableViewCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: CountryTableViewCell.self))
@@ -34,7 +35,7 @@ class CountryTableViewController: UITableViewController {
         navigationItem.title = "인기 도시"
     }
 
-    private func searchTextFieldUI() {
+    private func setupSearchTextFieldUI() {
         let holder = "검색어를 입력해주세요"
         searchTextField.placeholder = holder
         searchTextField.borderStyle = .line
@@ -44,7 +45,7 @@ class CountryTableViewController: UITableViewController {
         searchTextField.autocorrectionType = .no
     }
 
-    private func segmentedMenuUI() {
+    private func setupSegmentedMenuUI() {
         segMenu.selectedSegmentIndex = 0
         segMenu.setTitle("모두", forSegmentAt: 0)
         segMenu.setTitle("국내", forSegmentAt: 1)
@@ -123,7 +124,6 @@ class CountryTableViewController: UITableViewController {
         let explainKeywordArr = cityData.city.map { $0.cityExplain }
 
         // TODO: 비교식이 반대라서 이렇게 하면 계속 else 구문만 실행됨
-
         if krKeywordArr.contains(where: { $0 == keyword }) ||
             enKeywordArr.contains(where: { $0 == keyword }) ||
             explainKeywordArr.contains(where: { $0 == keyword })
