@@ -21,4 +21,8 @@ struct City {
         self.cityImage = city_image
         self.domesticTravel = domestic_travel
     }
+
+    var upperKeyword: String {
+        return cityEnglishName.uppercased()
+    }
 }

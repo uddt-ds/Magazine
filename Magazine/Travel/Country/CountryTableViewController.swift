@@ -20,6 +20,7 @@ class CountryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        searchTextFieldUI()
         segmentedMenuUI()
 
         let nib = UINib(nibName: String(describing: CountryTableViewCell.self), bundle: nil)
@@ -38,7 +39,10 @@ class CountryTableViewController: UITableViewController {
         searchTextField.placeholder = holder
         searchTextField.borderStyle = .line
         searchTextField.textAlignment = .left
-        searchTextField.textColor = .black
+        searchTextField.textColor = .gray
+        searchTextField.autocapitalizationType = .none
+        searchTextField.autocorrectionType = .no
+//        searchTextField.spellCheckingType = .no
     }
 
     private func segmentedMenuUI() {
@@ -77,32 +81,34 @@ class CountryTableViewController: UITableViewController {
     }
 
     @IBAction func textFieldEndExit(_ sender: UITextField) {
-
-        // TODO: 텍스트 입력 검사
-        // TODO: currentData에 값 주입해주기
-
-        let krKeywordArr = cityData.city.map { $0.cityName }
-        let enKeywordArr = cityData.city.map { $0.cityEnglishName }
-        let explainKeywordArr = cityData.city.map { $0.cityExplain }
-
-        if krKeywordArr.contains(where: { $0 == sender.text }) ||
-            enKeywordArr.contains(where: { $0 == sender.text }) ||
-            explainKeywordArr.contains(where: { $0 == sender.text })
-        {
-            tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .bottom)
+        guard let keyword = sender.text?.uppercased(), !keyword.isEmpty else {
+            segmentedTapped(segMenu)
+            return
         }
+
+        let nonSpaceKeyword = keyword.trimmingCharacters(in: .whitespaces)
+
+        //TODO: 국내, 국외 구분 검색 기능 필요
+
+        currentData = cityData.city.filter({
+            $0.cityName == nonSpaceKeyword ||
+            $0.cityEnglishName == nonSpaceKeyword ||
+            $0.cityExplain == nonSpaceKeyword ||
+            $0.upperKeyword == nonSpaceKeyword
+        })
+
+        tableView.reloadData()
     }
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+
+        if sender.text == "" {
+            segmentedTapped(segMenu)
+        }
+
         let krKeywordArr = cityData.city.map { $0.cityName }
         let enKeywordArr = cityData.city.map { $0.cityEnglishName }
         let explainKeywordArr = cityData.city.map { $0.cityExplain }
-
-//        if krKeywordArr.contains(sender.text!) {
-//            sender.textColor = .brown
-//        } else {
-//            sender.textColor = .black
-//        }
 
         if krKeywordArr.contains(where: { $0 == sender.text }) ||
             enKeywordArr.contains(where: { $0 == sender.text }) ||

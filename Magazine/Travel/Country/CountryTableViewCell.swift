@@ -66,7 +66,7 @@ class CountryTableViewCell: UITableViewCell {
         ])
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//    }
 }
