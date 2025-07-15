@@ -65,8 +65,4 @@ class CountryTableViewCell: UITableViewCell {
             .scaleFactor(UIScreen.main.scale)
         ])
     }
-
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//    }
 }

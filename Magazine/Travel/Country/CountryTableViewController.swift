@@ -42,7 +42,6 @@ class CountryTableViewController: UITableViewController {
         searchTextField.textColor = .gray
         searchTextField.autocapitalizationType = .none
         searchTextField.autocorrectionType = .no
-//        searchTextField.spellCheckingType = .no
     }
 
     private func segmentedMenuUI() {
@@ -88,35 +87,56 @@ class CountryTableViewController: UITableViewController {
 
         let nonSpaceKeyword = keyword.trimmingCharacters(in: .whitespaces)
 
-        //TODO: 국내, 국외 구분 검색 기능 필요
+        switch segMenu.selectedSegmentIndex {
+        case 0:
+            currentData = cityData.city
+        case 1:
+            currentData = cityData.city.filter({ $0.domesticTravel })
+        case 2:
+            currentData = cityData.city.filter({ !$0.domesticTravel })
+        default:
+            currentData = cityData.city
+        }
 
-        currentData = cityData.city.filter({
+        currentData = currentData.filter({
             $0.cityName == nonSpaceKeyword ||
-            $0.cityEnglishName == nonSpaceKeyword ||
-            $0.cityExplain == nonSpaceKeyword ||
-            $0.upperKeyword == nonSpaceKeyword
+            $0.upperKeyword == nonSpaceKeyword ||
+            $0.cityExplain == nonSpaceKeyword
         })
 
         tableView.reloadData()
     }
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        guard let keyword = sender.text?.uppercased(), !keyword.isEmpty else {
+            return
+        }
 
         if sender.text == "" {
             segmentedTapped(segMenu)
         }
 
+        let attributedKeyword = NSMutableAttributedString(string: keyword)
+
         let krKeywordArr = cityData.city.map { $0.cityName }
-        let enKeywordArr = cityData.city.map { $0.cityEnglishName }
+        let enKeywordArr = cityData.city.map { $0.upperKeyword }
         let explainKeywordArr = cityData.city.map { $0.cityExplain }
 
-        if krKeywordArr.contains(where: { $0 == sender.text }) ||
-            enKeywordArr.contains(where: { $0 == sender.text }) ||
-            explainKeywordArr.contains(where: { $0 == sender.text })
+        // TODO: 비교식이 반대라서 이렇게 하면 계속 else 구문만 실행됨
+
+        if krKeywordArr.contains(where: { $0 == keyword }) ||
+            enKeywordArr.contains(where: { $0 == keyword }) ||
+            explainKeywordArr.contains(where: { $0 == keyword })
         {
-            sender.textColor = .brown
+            let keywordRange = (keyword as NSString).range(of: keyword)
+            attributedKeyword.addAttributes([
+                .foregroundColor: UIColor.brown
+            ], range: keywordRange)
         } else {
-            sender.textColor = .black
+            let nonKeywordRange = (keyword as NSString).range(of: keyword)
+            attributedKeyword.addAttributes([
+                .foregroundColor: UIColor.black
+            ], range: nonKeywordRange)
         }
     }
 }
