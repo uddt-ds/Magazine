@@ -58,12 +58,13 @@
                     <constraint firstAttribute="bottom" secondItem="6or-hU-pw9" secondAttribute="bottom" id="jc4-zT-thz"/>
                 </constraints>
             </tableViewCellContentView>
+            <gestureRecognizers/>
             <connections>
                 <outlet property="adButton" destination="zbh-1n-4y3" id="5Qr-Xf-T2p"/>
                 <outlet property="adCellBgView" destination="6or-hU-pw9" id="O8P-nl-x2y"/>
                 <outlet property="adCellLabel" destination="GeI-7K-Flc" id="wsM-zj-hJN"/>
             </connections>
-            <point key="canvasLocation" x="729.00763358778624" y="-298.59154929577466"/>
+            <point key="canvasLocation" x="728.24427480916029" y="-298.59154929577466"/>
         </tableViewCell>
     </objects>
     <resources>

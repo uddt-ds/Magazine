@@ -7,7 +7,6 @@
 
 import UIKit
 
-
  // TODO: static var(static let), class var 차이 이해하기
 extension UIColor {
     static let paseutelPink: UIColor = UIColor(red: 255/255, green: 211/255, blue: 211/255, alpha: 1.0)
