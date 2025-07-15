@@ -64,7 +64,7 @@
                 <outlet property="adCellBgView" destination="6or-hU-pw9" id="O8P-nl-x2y"/>
                 <outlet property="adCellLabel" destination="GeI-7K-Flc" id="wsM-zj-hJN"/>
             </connections>
-            <point key="canvasLocation" x="728.24427480916029" y="-298.59154929577466"/>
+            <point key="canvasLocation" x="739" y="-289"/>
         </tableViewCell>
     </objects>
     <resources>

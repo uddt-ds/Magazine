@@ -18,7 +18,6 @@ class AdCell: UITableViewCell {
         designBgView()
         designAdButton()
         designAdLabel()
-        makeGesture()
     }
 
     private func designBgView() {
@@ -44,19 +43,5 @@ class AdCell: UITableViewCell {
 
     func configureLabel(_ data: Travel) {
         adCellLabel.text = data.title
-    }
-
-    private func makeGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(adViewTapped))
-        adCellBgView.addGestureRecognizer(tapGesture)
-    }
-
-    @objc func adViewTapped() {
-        makeToast("광고 셀입니다", duration: 2, position: .center)
-    }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        hideToast()
     }
 }

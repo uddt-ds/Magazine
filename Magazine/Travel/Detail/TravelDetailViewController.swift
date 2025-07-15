@@ -16,7 +16,7 @@ final class TravelDetailViewController: UIViewController {
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var subLabel: UILabel!
     @IBOutlet var findButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()

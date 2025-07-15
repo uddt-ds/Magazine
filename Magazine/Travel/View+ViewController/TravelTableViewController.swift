@@ -64,6 +64,15 @@ final class TravelTableViewController: UITableViewController {
             navigationController?.navigationBar.tintColor = .black
             navigationController?.navigationBar.topItem?.title = ""
             navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let id = String(describing: AdDetailViewController.self)
+            let sb = UIStoryboard(name: id, bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: id) as! AdDetailViewController
+
+            vc.view.backgroundColor = .white
+            vc.configureUI(with: dataManager.travelInfo.travel[indexPath.row])
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
         }
     }
 
