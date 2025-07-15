@@ -48,24 +48,17 @@ class CountryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch segMenu.selectedSegmentIndex {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryTableViewCell.self), for: indexPath) as! CountryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryTableViewCell.self), for: indexPath) as! CountryTableViewCell
 
+        if segMenu.selectedSegmentIndex == 0 {
             cell.configureCell(with: cityData.city[indexPath.row])
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryTableViewCell.self), for: indexPath) as! CountryTableViewCell
-
-            cell.configureCell(with: cityData.domesticData[indexPath.row])
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryTableViewCell.self), for: indexPath) as! CountryTableViewCell
-            cell.configureCell(with: cityData.overseaData[indexPath.row])
-        default:
-            return UITableViewCell()
+        } else if segMenu.selectedSegmentIndex == 1{
+            cell.configureCell(with: cityData.city.filter({ $0.domesticTravel == true })[indexPath.row])
+        } else if segMenu.selectedSegmentIndex == 2{
+            cell.configureCell(with: cityData.city.filter({ $0.domesticTravel == false })[indexPath.row])
         }
-        return UITableViewCell()
+
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
