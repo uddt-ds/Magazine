@@ -121,13 +121,13 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     @IBAction func textFieldEndExit(_ sender: UITextField) {
-        guard let keyword = sender.text?.uppercased(),
-              !keyword.isEmpty else {
+        guard let userInput = sender.text?.uppercased(),
+              !userInput.isEmpty else {
             segmentedTapped(segMenu)
             return
         }
 
-        let nonSpacedKeyword = keyword.trimmingCharacters(in: .whitespaces)
+        let nonSpacedKeyword = userInput.trimmingCharacters(in: .whitespaces)
 
         switch segMenu.selectedSegmentIndex {
         case 0:
@@ -150,8 +150,8 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     @IBAction func textFieldEditChanged(_ sender: UITextField) {
-        guard let keyword = sender.text?.uppercased(),
-              !keyword.isEmpty else {
+        guard let userInput = sender.text?.uppercased(),
+              !userInput.isEmpty else {
             return
         }
 
@@ -159,11 +159,40 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
             segmentedTapped(segMenu)
         }
 
-        let attributedKeyword = NSMutableAttributedString(string: keyword)
+        let attributedKeyword = NSMutableAttributedString(string: userInput)
+        print(attributedKeyword)
 
         let krKeywordArr = cityData.city.map { $0.cityName }
         let enKeywordArr = cityData.city.map { $0.upperKeyword }
-        let explainKeywordArr = cityData.city.map { $0.cityExplain }
+        let rawExplainKeywordArr = cityData.city.map { $0.cityExplain }
+
+        // TODO: components(separatedBy:) 찾아보기
+        let explainArrData = rawExplainKeywordArr.map {
+            $0.split(separator: ",")
+        }
+
+        print(rawExplainKeywordArr)
+
+        var explainKeyword = [String]()
+
+        for data in explainArrData {
+            for keyword in data {
+                explainKeyword.append(String(keyword.trimmingCharacters(in: .whitespaces)))
+            }
+        }
+
+        let totalKeywords = krKeywordArr + enKeywordArr + explainKeyword
+
+        for word in totalKeywords {
+            if let range = userInput.range(of: word) {
+                print("range: \(range)")
+                let nsRange = NSRange(range, in: userInput)
+                print("NSRange: \(nsRange)")
+                attributedKeyword.addAttribute(.foregroundColor, value: UIColor.brown, range: nsRange)
+            }
+        }
+
+        sender.attributedText = attributedKeyword
 
 
 
@@ -184,25 +213,25 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
 //        }
 
         // TODO: 주어진 단어를 배열에 저장하고, 작성된 글자를 조합해서 반복문(돌려서 적용..)
-        // TODO: 한칸짜리 탐색 -> 두글자짜리 탐색
-        // TODO: 텍스트 길이 받아오고(이만큼 반복), 글자별로 딕셔너리 만들고 돌리기(고민)
-        // TODO: 트리 구조: trie 자료구조(그냥 찾아만 보세요 - 시간복잡도가 덜 들거에요)
-        if krKeywordArr.contains(where: { $0 == keyword }) ||
-            enKeywordArr.contains(where: { $0 == keyword }) ||
-            explainKeywordArr.contains(where: { $0.contains(keyword) })
-        {
-            let keywordRange = (keyword as NSString).range(of: keyword)
-            attributedKeyword.addAttributes([
-                .foregroundColor: UIColor.brown
-            ], range: keywordRange)
-            sender.attributedText = attributedKeyword
-        } else {
-            let nonKeywordRange = (keyword as NSString).range(of: keyword)
-            attributedKeyword.addAttributes([
-                .foregroundColor: UIColor.black
-            ], range: nonKeywordRange)
-            sender.attributedText = attributedKeyword
-        }
+        // 한칸짜리 탐색 -> 두글자짜리 탐색
+        // 텍스트 길이 받아오고(텍스트 길이만큼 반복), 글자별로 딕셔너리 만들고 돌리는 방법 (고민)
+        // 트리 구조: trie 자료구조(찾아보기 - 시간복잡도 관련 keyword)
+//        if krKeywordArr.contains(where: { $0 == keyword }) ||
+//            enKeywordArr.contains(where: { $0 == keyword }) ||
+//            explainKeywordArr.contains(where: { $0.contains(keyword) })
+//        {
+//            let keywordRange = (keyword as NSString).range(of: keyword)
+//            attributedKeyword.addAttributes([
+//                .foregroundColor: UIColor.brown
+//            ], range: keywordRange)
+//            sender.attributedText = attributedKeyword
+//        } else {
+//            let nonKeywordRange = (keyword as NSString).range(of: keyword)
+//            attributedKeyword.addAttributes([
+//                .foregroundColor: UIColor.black
+//            ], range: nonKeywordRange)
+//            sender.attributedText = attributedKeyword
+//        }
     }
     
 
