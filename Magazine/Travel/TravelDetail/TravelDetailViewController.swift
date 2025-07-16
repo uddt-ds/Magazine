@@ -59,12 +59,7 @@ final class TravelDetailViewController: UIViewController {
 
     private func designButton() {
         let title = "다른 관광지 보러 가기"
-        findButton.setTitle(title, for: .normal)
-        findButton.setTitleColor(.white, for: .normal)
-        findButton.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        findButton.backgroundColor = .systemIndigo
-        findButton.layer.cornerRadius = 24
-        findButton.clipsToBounds = true
+        findButton.designButtonUI(title: title, titleColor: .white, bgColor: .systemIndigo, radius: 24, font: .boldSystemFont(ofSize: 16))
     }
 
     func configureUI() {

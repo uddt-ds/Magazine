@@ -51,11 +51,12 @@ final class ThreeSixViewController: UIViewController {
     }
 
     private func designButtonUI() {
-        resetButton.setTitle("초기화", for: .normal)
-        resetButton.setTitleColor(.black, for: .normal)
-        resetButton.backgroundColor = .paseutelPink
-        resetButton.layer.cornerRadius = 12
-        resetButton.clipsToBounds = true
+        let title = "초기화"
+        resetButton.designButtonUI(title: title,
+                                   titleColor: .black,
+                                   bgColor: .paseutelPink,
+                                   radius: 12,
+                                   font: .boldSystemFont(ofSize: 16))
     }
 
     private func checkContainsMultipleThree(_ input: String) -> [String] {

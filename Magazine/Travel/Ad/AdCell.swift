@@ -13,8 +13,6 @@ class AdCell: UITableViewCell {
     @IBOutlet var adCellLabel: UILabel!
     @IBOutlet var adButton: UIButton!
 
-    let adTitle: String = ""
-
     override func awakeFromNib() {
         super.awakeFromNib()
         designBgView()
@@ -28,13 +26,13 @@ class AdCell: UITableViewCell {
     }
 
     private func designAdButton() {
-        adButton.setTitle("AD", for: .normal)
-        adButton.setTitleColor(.black, for: .normal)
-        adButton.titleLabel?.font = .systemFont(ofSize: 11)
-        adButton.isUserInteractionEnabled = false
-        adButton.backgroundColor = .white
-        adButton.layer.cornerRadius = 10
-        adButton.clipsToBounds = true
+        let title = "AD"
+        adButton.designButtonUI(title: title,
+                                titleColor: .black,
+                                bgColor: .white,
+                                radius: 10,
+                                font: .systemFont(ofSize: 11),
+                                enabled: true)
     }
 
     private func designAdLabel() {
