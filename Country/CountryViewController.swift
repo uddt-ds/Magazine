@@ -133,20 +133,40 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let enKeywordArr = cityData.city.map { $0.upperKeyword }
         let explainKeywordArr = cityData.city.map { $0.cityExplain }
 
-        // TODO: 비교식이 반대라서 이렇게 하면 계속 else 구문만 실행됨
+
+
+//        if krKeywordArr.contains(where: {
+//            $0.contains(keyword)
+//        }) {
+//            let keywordRange = (keyword as NSString).range(of: keyword)
+//            attributedKeyword.addAttributes([
+//                .foregroundColor: UIColor.brown
+//            ], range: keywordRange)
+//            sender.attributedText = attributedKeyword
+//        } else {
+//            let nonKeywordRange = (keyword as NSString).range(of: keyword)
+//            attributedKeyword.addAttributes([
+//                .foregroundColor: UIColor.black
+//            ], range: nonKeywordRange)
+//            sender.attributedText = attributedKeyword
+//        }
+
+        // 이거 어떻게 split해서 앞에거만 살리지
         if krKeywordArr.contains(where: { $0 == keyword }) ||
             enKeywordArr.contains(where: { $0 == keyword }) ||
-            explainKeywordArr.contains(where: { $0 == keyword })
+            explainKeywordArr.contains(where: { $0.contains(keyword) })
         {
             let keywordRange = (keyword as NSString).range(of: keyword)
             attributedKeyword.addAttributes([
                 .foregroundColor: UIColor.brown
             ], range: keywordRange)
+            sender.attributedText = attributedKeyword
         } else {
             let nonKeywordRange = (keyword as NSString).range(of: keyword)
             attributedKeyword.addAttributes([
                 .foregroundColor: UIColor.black
             ], range: nonKeywordRange)
+            sender.attributedText = attributedKeyword
         }
     }
     

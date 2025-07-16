@@ -17,7 +17,7 @@ struct Travel {
     var save: Int?
     var like: Bool?
     let ad: Bool
-
+    
     init(title: String, description: String?, travel_image: String?, grade: Double?, save: Int?, like: Bool?, ad: Bool) {
         self.title = title
         self.description = description != nil ? description : ""
@@ -27,21 +27,26 @@ struct Travel {
         self.like = like != nil ? like : false
         self.ad = ad
     }
-
+    
     var gradeDescription: String {
         return String(describing: grade ?? 0)
     }
-
+    
     var saveDescription: String {
         return String(describing: save!.formatted(.number))
     }
-
+    
     var gradeNumber: Double {
         return grade!
     }
-
+    
     var urlString: String {
         return travelImage!
     }
+
+//    // TODO: Bool값에 따라서 다르게 쏴주거나, 고차함수를 써서 각각 다르게 반환
+//    func a() -> [TravelData] {
+//
+//    }
 }
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Country View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CountryViewController" id="Y6W-OH-hqX" customClass="CountryViewController" customModule="Magazine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qkx-an-KsU">
+                                <rect key="frame" x="24" y="147" width="345" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BJ9-bn-V7V"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedTapped:" destination="Y6W-OH-hqX" eventType="valueChanged" id="gre-ZF-dgc"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="St4-hF-oDm">
+                                <rect key="frame" x="20" y="83" width="353" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="QOX-Em-vhv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="wzU-cD-4UJ"/>
+                                    <action selector="textFieldEndExit:" destination="Y6W-OH-hqX" eventType="editingDidEndOnExit" id="qEx-vx-q6f"/>
+                                </connections>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2E9-AO-07W">
+                                <rect key="frame" x="0.0" y="211" width="393" height="607"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="St4-hF-oDm" secondAttribute="trailing" constant="20" id="0cc-v4-jdX"/>
+                            <constraint firstItem="Qkx-an-KsU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="FIr-Ci-LqR"/>
+                            <constraint firstItem="2E9-AO-07W" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="ORe-vS-dDp"/>
+                            <constraint firstItem="Qkx-an-KsU" firstAttribute="top" secondItem="St4-hF-oDm" secondAttribute="bottom" constant="24" id="Qge-RA-h0w"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Qkx-an-KsU" secondAttribute="trailing" constant="24" id="bJ6-tq-Z5P"/>
+                            <constraint firstItem="2E9-AO-07W" firstAttribute="top" secondItem="Qkx-an-KsU" secondAttribute="bottom" constant="24" id="gZ5-wT-oa2"/>
+                            <constraint firstItem="St4-hF-oDm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="hvG-T9-kOk"/>
+                            <constraint firstItem="2E9-AO-07W" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="jUC-6n-mfw"/>
+                            <constraint firstItem="St4-hF-oDm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="q0s-Os-Cob"/>
+                            <constraint firstItem="2E9-AO-07W" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="uFj-ix-PsZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="countryTableView" destination="2E9-AO-07W" id="SNS-0V-WCx"/>
+                        <outlet property="searchTextField" destination="St4-hF-oDm" id="8Qj-2G-wpz"/>
+                        <outlet property="segMenu" destination="Qkx-an-KsU" id="8Bb-Sf-1nn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

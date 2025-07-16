@@ -68,7 +68,7 @@ final class TravelTableViewController: UITableViewController {
             let sb = UIStoryboard(name: id, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: id) as! AdDetailViewController
 
-            vc.adDetailTitle = data.title
+            vc.adData.title = dataManager.travelInfo.travel[indexPath.row].title
 
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
@@ -78,12 +78,6 @@ final class TravelTableViewController: UITableViewController {
             present(nav, animated: true)
         }
     }
-
-//    private func setupNavItem(nav: UINavigationController) {
-//        let image = UIImage(systemName: "xmark")
-//        let barButtonItem =
-//        nav.navigationItem.leftBarButtonItem = barButtonItem
-//    }
 
     @objc func xmarkTapped() {
         dismiss(animated: true)

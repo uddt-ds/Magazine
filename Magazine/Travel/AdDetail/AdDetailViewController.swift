@@ -11,13 +11,13 @@ class AdDetailViewController: UIViewController {
 
     @IBOutlet var adDetailLabel: UILabel!
 
-    var adDetailTitle: String = ""
+    var adData: Ad = .init(title: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabel()
-        setupAdLabel()
         setupNav()
+        configureAdLabel()
     }
 
     private func setupLabel() {
@@ -34,8 +34,8 @@ class AdDetailViewController: UIViewController {
         navigationItem.title = "광고 화면"
     }
 
-    private func setupAdLabel() {
-        adDetailLabel.text = adDetailTitle
+    func configureAdLabel() {
+        adDetailLabel.text = adData.title
     }
 
     @objc func closeButtonTapped() {
