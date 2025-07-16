@@ -25,6 +25,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         setupSearchTextFieldUI()
         setupSegmentedMenuUI()
         setupTableViewSeperator()
+        setBackground()
 
         countryTableView.rowHeight = 200
 
@@ -35,6 +36,10 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         countryTableView.delegate = self
 
         currentData = cityData.city
+    }
+
+    private func setBackground() {
+        countryTableView.backgroundColor = .clear
     }
 
     private func setupNavigation() {
@@ -98,7 +103,6 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func setupNavigationBar() {
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .black
-
     }
 
 

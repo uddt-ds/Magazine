@@ -80,6 +80,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgImageView" destination="uPD-L7-3Ts" id="dBg-zh-nhX"/>
+                <outlet property="bgView" destination="nev-hc-LGr" id="8eg-iY-YBw"/>
                 <outlet property="characterBgView" destination="TIG-UW-sZg" id="Gkl-Nv-r1P"/>
                 <outlet property="characterLabel" destination="WOV-jV-iAJ" id="Beo-xj-6Je"/>
                 <outlet property="countryLabel" destination="gWU-1E-Aga" id="osR-ji-FXg"/>

@@ -10,6 +10,7 @@ import Kingfisher
 
 class CountryTableViewCell: UITableViewCell {
 
+    @IBOutlet var bgView: UIView!
     @IBOutlet var countryLabel: UILabel!
     @IBOutlet var characterBgView: UIView!
     @IBOutlet var characterLabel: UILabel!
@@ -21,6 +22,13 @@ class CountryTableViewCell: UITableViewCell {
         setupLabelUI()
         setupBgImageView()
         setupBgView()
+        setBackground()
+    }
+
+    private func setBackground() {
+        backgroundColor = .clear
+        bgView.backgroundColor = .clear
+        contentView.backgroundColor = .clear
     }
 
     private func setupLabelUI() {
