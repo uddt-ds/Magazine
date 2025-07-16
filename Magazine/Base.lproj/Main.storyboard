@@ -125,11 +125,11 @@
             </objects>
             <point key="canvasLocation" x="3028" y="1613"/>
         </scene>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="oFx-If-Wfd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9UA-vu-yqm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="okp-ys-tLD"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass.circle.fill" catalog="system" id="okp-ys-tLD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a9W-kw-aWM">
                         <rect key="frame" x="0.0" y="124" width="402" height="44"/>
@@ -147,6 +147,7 @@
     </scenes>
     <resources>
         <image name="airplane" catalog="system" width="128" height="115"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="mappin.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
