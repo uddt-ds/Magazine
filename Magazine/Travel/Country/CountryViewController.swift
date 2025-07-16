@@ -1,18 +1,20 @@
 //
-//  CountryTableViewController.swift
+//  CountryViewController.swift
 //  Magazine
 //
-//  Created by Lee on 7/15/25.
+//  Created by Lee on 7/16/25.
 //
 
 import UIKit
 
-class CountryTableViewController: UITableViewController {
+class CountryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet var searchTextField: UITextField!
 
     @IBOutlet var segMenu: UISegmentedControl!
 
-    @IBOutlet var searchTextField: UITextField!
-    
+    @IBOutlet var countryTableView: UITableView!
+
     let cityData = CityInfo()
 
     var currentData = [City]()
@@ -24,8 +26,13 @@ class CountryTableViewController: UITableViewController {
         setupSegmentedMenuUI()
         setupTableViewSeperator()
 
-        let nib = UINib(nibName: String(describing: CountryTableViewCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: String(describing: CountryTableViewCell.self))
+        countryTableView.rowHeight = 200
+
+        let nib = UINib(nibName: "CountryTableViewCell", bundle: nil)
+        countryTableView.register(nib, forCellReuseIdentifier: "CountryTableViewCell")
+
+        countryTableView.dataSource = self
+        countryTableView.delegate = self
 
         currentData = cityData.city
     }
@@ -53,22 +60,19 @@ class CountryTableViewController: UITableViewController {
     }
 
     private func setupTableViewSeperator() {
-        tableView.separatorStyle = .none
+        countryTableView.separatorStyle = .none
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentData.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryTableViewCell.self), for: indexPath) as! CountryTableViewCell
         cell.configureCell(with: currentData[indexPath.row])
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
-    }
 
     @IBAction func segmentedTapped(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -81,16 +85,17 @@ class CountryTableViewController: UITableViewController {
         default:
             currentData = cityData.city
         }
-        tableView.reloadData()
+        countryTableView.reloadData()
     }
 
     @IBAction func textFieldEndExit(_ sender: UITextField) {
-        guard let keyword = sender.text?.uppercased(), !keyword.isEmpty else {
+        guard let keyword = sender.text?.uppercased(),
+              !keyword.isEmpty else {
             segmentedTapped(segMenu)
             return
         }
 
-        let nonSpaceKeyword = keyword.trimmingCharacters(in: .whitespaces)
+        let nonSpacedKeyword = keyword.trimmingCharacters(in: .whitespaces)
 
         switch segMenu.selectedSegmentIndex {
         case 0:
@@ -104,16 +109,17 @@ class CountryTableViewController: UITableViewController {
         }
 
         currentData = currentData.filter({
-            $0.cityName == nonSpaceKeyword ||
-            $0.upperKeyword == nonSpaceKeyword ||
-            $0.cityExplain.contains(nonSpaceKeyword)
+            $0.cityName == nonSpacedKeyword ||
+            $0.upperKeyword == nonSpacedKeyword ||
+            $0.cityExplain.contains(nonSpacedKeyword)
         })
 
-        tableView.reloadData()
+        countryTableView.reloadData()
     }
 
-    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        guard let keyword = sender.text?.uppercased(), !keyword.isEmpty else {
+    @IBAction func textFieldEditChanged(_ sender: UITextField) {
+        guard let keyword = sender.text?.uppercased(),
+              !keyword.isEmpty else {
             return
         }
 
@@ -143,4 +149,6 @@ class CountryTableViewController: UITableViewController {
             ], range: nonKeywordRange)
         }
     }
+    
+
 }
