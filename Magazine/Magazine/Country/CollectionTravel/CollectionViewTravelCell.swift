@@ -10,7 +10,6 @@ import UIKit
 final class CollectionViewTravelCell: UICollectionViewCell {
 
     @IBOutlet var travelImageView: UIImageView!
-
     @IBOutlet var labelStackView: UIStackView!
 
     @IBOutlet var mainLabel: UILabel!
@@ -34,7 +33,7 @@ final class CollectionViewTravelCell: UICollectionViewCell {
         labelStackView.alignment = .center
         labelStackView.spacing = 4
     }
-
+    
     private func setupLabel() {
         mainLabel.designLabelUI(font: .boldSystemFont(ofSize: 14), color: .black)
         mainLabel.textAlignment = .center
@@ -43,8 +42,7 @@ final class CollectionViewTravelCell: UICollectionViewCell {
     }
 
     func configureCell(with data: City) {
-        guard let url = URL(string: data.cityImage) else { return }
-        travelImageView.kf.setImage(with: url)
+        travelImageView.loadImage(urlString: data.cityImage)
         mainLabel.text = "\(data.cityName) | \(data.cityEnglishName)"
         descriptionLabel.text = data.cityExplain
     }
