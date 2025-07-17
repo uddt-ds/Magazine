@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Collection Travel View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="CollectionTravelViewController" id="Y6W-OH-hqX" customClass="CollectionTravelViewController" customModule="Magazine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gko-cC-yAL">
+                                <rect key="frame" x="0.0" y="230" width="393" height="622"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZCJ-78-ceU">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="a5h-mr-fMS">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fd6-2k-OW4">
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zRP-Mj-pPP">
+                                <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uRs-Lf-m2g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="KaK-AK-vBX"/>
+                                    <action selector="textFieldEndExit:" destination="Y6W-OH-hqX" eventType="editingDidEndOnExit" id="dYk-lo-bQL"/>
+                                </connections>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NXg-n2-rOn">
+                                <rect key="frame" x="16" y="178" width="361" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="rdk-Yn-f66"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedTapped:" destination="Y6W-OH-hqX" eventType="valueChanged" id="scU-5F-XPP"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zRP-Mj-pPP" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="0y3-c7-372"/>
+                            <constraint firstItem="gko-cC-yAL" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="AIt-z6-rRq"/>
+                            <constraint firstItem="zRP-Mj-pPP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="DZQ-dk-lu7"/>
+                            <constraint firstItem="gko-cC-yAL" firstAttribute="top" secondItem="NXg-n2-rOn" secondAttribute="bottom" constant="20" id="QhE-6d-JIT"/>
+                            <constraint firstItem="NXg-n2-rOn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Zoc-ov-iiP"/>
+                            <constraint firstItem="gko-cC-yAL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="igl-qc-gps"/>
+                            <constraint firstItem="NXg-n2-rOn" firstAttribute="top" secondItem="zRP-Mj-pPP" secondAttribute="bottom" constant="16" id="nHn-Tu-xjd"/>
+                            <constraint firstAttribute="bottom" secondItem="gko-cC-yAL" secondAttribute="bottom" id="nfm-MZ-ucp"/>
+                            <constraint firstItem="zRP-Mj-pPP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="oEE-je-0MY"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="NXg-n2-rOn" secondAttribute="trailing" constant="16" id="v86-sb-jN7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="zRP-Mj-pPP" id="R3y-bk-mrU"/>
+                        <outlet property="segMenu" destination="NXg-n2-rOn" id="nWr-e8-VmP"/>
+                        <outlet property="travelCollectionView" destination="gko-cC-yAL" id="ycj-hb-4RV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="35.877862595419849" y="24.647887323943664"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

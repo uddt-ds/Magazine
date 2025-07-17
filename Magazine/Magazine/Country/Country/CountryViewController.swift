@@ -153,6 +153,8 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
         }
 
+        //TODO: 원본 값을 가지고 있고, 비교 연산을 소문자로만 비교하는 연산(특정 단어의 index로 접근해서)
+        //TODO: 재귀함수..... 탐색을 돌려서 길이에 맞게.... (while문으로 탐색)
         let nonSpacedKeyword = userInput.trimmingCharacters(in: .whitespaces)
 
         switch segMenu.selectedSegmentIndex {

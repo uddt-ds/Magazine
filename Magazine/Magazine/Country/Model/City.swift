@@ -29,4 +29,6 @@ struct City {
     var upperKeyword: String {
         return cityEnglishName.uppercased()
     }
+
+
 }
