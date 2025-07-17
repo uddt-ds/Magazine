@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ad {
+struct AdData {
     var title: String
 
     init(title: String) {

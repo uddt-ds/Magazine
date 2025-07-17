@@ -11,7 +11,7 @@ class AdDetailViewController: UIViewController {
 
     @IBOutlet var adDetailLabel: UILabel!
 
-    var adData: Ad = .init(title: "")
+    var adData: AdData = .init(title: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()

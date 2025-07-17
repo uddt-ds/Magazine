@@ -12,6 +12,8 @@ final class TravelTableViewController: UITableViewController {
 
     var dataManager = DataManager()
 
+//    let totalData = DataManager().travelInfo.travel
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -34,9 +36,12 @@ final class TravelTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if dataManager.travelInfo.travel[indexPath.row].ad == false {
+
+        let totalData = dataManager.travelInfo.travel
+
+        if totalData[indexPath.row].ad == false {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for: indexPath) as? TravelCell else { return .init() }
-            cell.configureCell(dataManager.travelInfo.travel[indexPath.row])
+            cell.configureCell(totalData[indexPath.row])
 
             cell.likeButton.tag = indexPath.row
             cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
@@ -48,15 +53,17 @@ final class TravelTableViewController: UITableViewController {
             let adColors: [UIColor] = [.paseutelPink, .paseutelGreen, .paseutelBlue]
             let index = adIndex(indexPath)
             cell.adCellBgView.backgroundColor = adColors[index]
-            cell.configureLabel(dataManager.travelInfo.travel[indexPath.row])
+            cell.configureLabel(totalData[indexPath.row])
 
             return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = dataManager.travelInfo.travel[indexPath.row]
-        if dataManager.travelInfo.travel[indexPath.row].ad == false {
+        let totalData = dataManager.travelInfo.travel
+
+        let data = totalData[indexPath.row]
+        if !data.ad {
             let sb = UIStoryboard(name: TravelDetailViewController.identifier, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: TravelDetailViewController.identifier) as! TravelDetailViewController
             vc.data = data
@@ -68,7 +75,7 @@ final class TravelTableViewController: UITableViewController {
             let sb = UIStoryboard(name: id, bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: id) as! AdDetailViewController
 
-            vc.adData.title = dataManager.travelInfo.travel[indexPath.row].title
+            vc.adData.title = totalData[indexPath.row].title
 
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
@@ -85,7 +92,7 @@ final class TravelTableViewController: UITableViewController {
 
     private func adIndex(_ indexPath: IndexPath) -> Int {
         let totalData = dataManager.travelInfo.travel
-        let adData = totalData.filter { $0.ad == true }
+        let adData = dataManager.adData
 
         let currentAdData = totalData[indexPath.row]
         

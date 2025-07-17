@@ -73,4 +73,11 @@ class CountryTableViewCell: UITableViewCell {
             .scaleFactor(UIScreen.main.scale)
         ])
     }
+
+    func configureLabel(with keyword: String) {
+        [countryLabel, characterLabel].forEach {
+            $0?.asColor(targetString: keyword, color: .systemBlue)
+        }
+
+    }
 }

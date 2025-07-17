@@ -75,6 +75,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CountryTableViewCell.self), for: indexPath) as! CountryTableViewCell
         cell.configureCell(with: currentData[indexPath.row])
+        cell.configureLabel(with: searchTextField.text ?? "")
         return cell
     }
 
@@ -96,7 +97,6 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
 
         setupNavigationBar()
-
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -121,9 +121,35 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     @IBAction func textFieldEndExit(_ sender: UITextField) {
-        guard let userInput = sender.text?.uppercased(),
-              !userInput.isEmpty else {
-            segmentedTapped(segMenu)
+//        guard let userInput = sender.text?.uppercased(),
+//              !userInput.isEmpty else {
+//            segmentedTapped(segMenu)
+//            return
+//        }
+//        let nonSpacedKeyword = userInput.trimmingCharacters(in: .whitespaces)
+//
+//        switch segMenu.selectedSegmentIndex {
+//        case 0:
+//            currentData = cityData.city
+//        case 1:
+//            currentData = cityData.city.filter({ $0.domesticTravel })
+//        case 2:
+//            currentData = cityData.city.filter({ !$0.domesticTravel })
+//        default:
+//            currentData = cityData.city
+//        }
+//
+//        currentData = currentData.filter({
+//            $0.cityName == nonSpacedKeyword ||
+//            $0.upperKeyword == nonSpacedKeyword ||
+//            $0.cityExplain.contains(nonSpacedKeyword)
+//        })
+//
+//        countryTableView.reloadData()
+    }
+
+    @IBAction func textFieldEditChanged(_ sender: UITextField) {
+        guard let userInput = sender.text else {
             return
         }
 
@@ -142,57 +168,50 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         currentData = currentData.filter({
             $0.cityName == nonSpacedKeyword ||
+            $0.cityEnglishName == nonSpacedKeyword ||
             $0.upperKeyword == nonSpacedKeyword ||
             $0.cityExplain.contains(nonSpacedKeyword)
         })
-
-        countryTableView.reloadData()
-    }
-
-    @IBAction func textFieldEditChanged(_ sender: UITextField) {
-        guard let userInput = sender.text?.uppercased(),
-              !userInput.isEmpty else {
-            return
-        }
 
         if sender.text == "" {
             segmentedTapped(segMenu)
         }
 
-        let attributedKeyword = NSMutableAttributedString(string: userInput)
-        print(attributedKeyword)
+        countryTableView.reloadData()
 
-        let krKeywordArr = cityData.city.map { $0.cityName }
-        let enKeywordArr = cityData.city.map { $0.upperKeyword }
-        let rawExplainKeywordArr = cityData.city.map { $0.cityExplain }
-
-        // TODO: components(separatedBy:) 찾아보기
-        let explainArrData = rawExplainKeywordArr.map {
-            $0.split(separator: ",")
-        }
-
-        print(rawExplainKeywordArr)
-
-        var explainKeyword = [String]()
-
-        for data in explainArrData {
-            for keyword in data {
-                explainKeyword.append(String(keyword.trimmingCharacters(in: .whitespaces)))
-            }
-        }
-
-        let totalKeywords = krKeywordArr + enKeywordArr + explainKeyword
-
-        for word in totalKeywords {
-            if let range = userInput.range(of: word) {
-                print("range: \(range)")
-                let nsRange = NSRange(range, in: userInput)
-                print("NSRange: \(nsRange)")
-                attributedKeyword.addAttribute(.foregroundColor, value: UIColor.brown, range: nsRange)
-            }
-        }
-
-        sender.attributedText = attributedKeyword
+//        let attributedKeyword = NSMutableAttributedString(string: userInput)
+//        print(attributedKeyword)
+//
+//        let krKeywordArr = cityData.city.map { $0.cityName }
+//        let enKeywordArr = cityData.city.map { $0.cityEnglishName }
+//        let upKeywordArr = cityData.city.map { $0.upperKeyword }
+//        let rawExplainKeywordArr = cityData.city.map { $0.cityExplain }
+//
+//        // TODO: components(separatedBy:) 찾아보기
+//        let explainArrData = rawExplainKeywordArr.map {
+//            $0.split(separator: ",")
+//        }
+//
+//        var explainKeyword = [String]()
+//
+//        for data in explainArrData {
+//            for keyword in data {
+//                explainKeyword.append(String(keyword.trimmingCharacters(in: .whitespaces)))
+//            }
+//        }
+//
+//        let totalKeywords = krKeywordArr + enKeywordArr + upKeywordArr + explainKeyword
+//
+//        for word in totalKeywords {
+//            if let range = userInput.range(of: word) {
+//                print("range: \(range)")
+//                let nsRange = NSRange(range, in: userInput)
+//                print("NSRange: \(nsRange)")
+//                attributedKeyword.addAttribute(.foregroundColor, value: UIColor.blue, range: nsRange)
+//            }
+//        }
+//
+//        sender.attributedText = attributedKeyword
 
 
 
