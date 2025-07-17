@@ -86,8 +86,6 @@ final class CollectionTravelViewController: UIViewController {
 
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: cellWidth/itemCount, height: cellWidth * 1.4/itemCount)
-        print(cellWidth * 1.4)
-        print(cellWidth)
 
         weight = cellWidth/itemCount
 
@@ -101,12 +99,7 @@ final class CollectionTravelViewController: UIViewController {
 
     @objc
     func leftButtonTapped(_ sender: UIBarButtonItem) {
-        print(#function)
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(identifier: String(describing: MagazineTableViewController.self))
-        //TODO: overFullScreen, overCurrentContext 차이 확인해보기
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true)
+        dismiss(animated: true)
     }
 
 
@@ -176,6 +169,32 @@ extension CollectionTravelViewController: UICollectionViewDataSource, UICollecti
         cell.configureImage(with: CGFloat(weight) / 2)
         cell.configureLabel(keyword: searchTextField.text ?? "")
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let sb = UIStoryboard(name: "CountryDetailViewController", bundle: nil)
+
+        let vc = sb.instantiateViewController(withIdentifier: "CountryDetailViewController") as! CountryDetailViewController
+
+        switch segMenu.selectedSegmentIndex {
+        case 0:
+            vc.data = totalData[indexPath.row]
+        case 1:
+            vc.data = data.filter({ $0.domesticTravel })[indexPath.row]
+        case 2:
+            vc.data = data.filter({ !$0.domesticTravel })[indexPath.row]
+        default:
+            return
+        }
+        setupNavigationBar()
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func setupNavigationBar() {
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .black
     }
 }
 

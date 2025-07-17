@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="2101.5267175572517" y="17.605633802816904"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custome Tab Bar Controller-->
         <scene sceneID="t9N-Bi-enz">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Scj-Qd-tLl" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Scj-Qd-tLl" customClass="CustomeTabBarController" customModule="Magazine" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gqB-HY-0R9">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -155,11 +155,11 @@
             </objects>
             <point key="canvasLocation" x="2136" y="1613"/>
         </scene>
-        <!--Item-->
+        <!--CollectionSearch-->
         <scene sceneID="RuX-SG-Qwp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M0y-pT-5F2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cQU-Yd-V3w"/>
+                    <tabBarItem key="tabBarItem" title="CollectionSearch" image="suitcase.rolling.fill" catalog="system" id="cQU-Yd-V3w"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qoW-ml-i1C">
                         <rect key="frame" x="0.0" y="124" width="402" height="44"/>
@@ -179,6 +179,7 @@
         <image name="airplane" catalog="system" width="128" height="115"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="123"/>
         <image name="mappin.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="suitcase.rolling.fill" catalog="system" width="91" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
