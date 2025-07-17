@@ -17,7 +17,7 @@ extension UILabel {
     func asColor(targetString: String, color: UIColor) {
         let fullText = text ?? ""
         let attributedString = NSMutableAttributedString(string: fullText)
-        let range = (fullText as NSString).range(of: targetString)
+        let range = (fullText as NSString).range(of: targetString, options: .caseInsensitive)
         attributedString.addAttribute(.foregroundColor, value: color, range: range)
         attributedText = attributedString
     }

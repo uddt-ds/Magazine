@@ -156,6 +156,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         //TODO: 원본 값을 가지고 있고, 비교 연산을 소문자로만 비교하는 연산(특정 단어의 index로 접근해서)
         //TODO: 재귀함수..... 탐색을 돌려서 길이에 맞게.... (while문으로 탐색)
         let nonSpacedKeyword = userInput.trimmingCharacters(in: .whitespaces)
+        let upperKeyword = nonSpacedKeyword.uppercased()
 
         switch segMenu.selectedSegmentIndex {
         case 0:
@@ -171,7 +172,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         currentData = currentData.filter({
             $0.cityName == nonSpacedKeyword ||
             $0.cityEnglishName == nonSpacedKeyword ||
-            $0.upperKeyword == nonSpacedKeyword ||
+            $0.upperKeyword == upperKeyword ||
             $0.cityExplain.contains(nonSpacedKeyword)
         })
 
@@ -180,79 +181,6 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
 
         countryTableView.reloadData()
-
-//        let attributedKeyword = NSMutableAttributedString(string: userInput)
-//        print(attributedKeyword)
-//
-//        let krKeywordArr = cityData.city.map { $0.cityName }
-//        let enKeywordArr = cityData.city.map { $0.cityEnglishName }
-//        let upKeywordArr = cityData.city.map { $0.upperKeyword }
-//        let rawExplainKeywordArr = cityData.city.map { $0.cityExplain }
-//
-//        // TODO: components(separatedBy:) 찾아보기
-//        let explainArrData = rawExplainKeywordArr.map {
-//            $0.split(separator: ",")
-//        }
-//
-//        var explainKeyword = [String]()
-//
-//        for data in explainArrData {
-//            for keyword in data {
-//                explainKeyword.append(String(keyword.trimmingCharacters(in: .whitespaces)))
-//            }
-//        }
-//
-//        let totalKeywords = krKeywordArr + enKeywordArr + upKeywordArr + explainKeyword
-//
-//        for word in totalKeywords {
-//            if let range = userInput.range(of: word) {
-//                print("range: \(range)")
-//                let nsRange = NSRange(range, in: userInput)
-//                print("NSRange: \(nsRange)")
-//                attributedKeyword.addAttribute(.foregroundColor, value: UIColor.blue, range: nsRange)
-//            }
-//        }
-//
-//        sender.attributedText = attributedKeyword
-
-
-
-//        if krKeywordArr.contains(where: {
-//            $0.contains(keyword)
-//        }) {
-//            let keywordRange = (keyword as NSString).range(of: keyword)
-//            attributedKeyword.addAttributes([
-//                .foregroundColor: UIColor.brown
-//            ], range: keywordRange)
-//            sender.attributedText = attributedKeyword
-//        } else {
-//            let nonKeywordRange = (keyword as NSString).range(of: keyword)
-//            attributedKeyword.addAttributes([
-//                .foregroundColor: UIColor.black
-//            ], range: nonKeywordRange)
-//            sender.attributedText = attributedKeyword
-//        }
-
-        // TODO: 주어진 단어를 배열에 저장하고, 작성된 글자를 조합해서 반복문(돌려서 적용..)
-        // 한칸짜리 탐색 -> 두글자짜리 탐색
-        // 텍스트 길이 받아오고(텍스트 길이만큼 반복), 글자별로 딕셔너리 만들고 돌리는 방법 (고민)
-        // 트리 구조: trie 자료구조(찾아보기 - 시간복잡도 관련 keyword)
-//        if krKeywordArr.contains(where: { $0 == keyword }) ||
-//            enKeywordArr.contains(where: { $0 == keyword }) ||
-//            explainKeywordArr.contains(where: { $0.contains(keyword) })
-//        {
-//            let keywordRange = (keyword as NSString).range(of: keyword)
-//            attributedKeyword.addAttributes([
-//                .foregroundColor: UIColor.brown
-//            ], range: keywordRange)
-//            sender.attributedText = attributedKeyword
-//        } else {
-//            let nonKeywordRange = (keyword as NSString).range(of: keyword)
-//            attributedKeyword.addAttributes([
-//                .foregroundColor: UIColor.black
-//            ], range: nonKeywordRange)
-//            sender.attributedText = attributedKeyword
-//        }
     }
     
 

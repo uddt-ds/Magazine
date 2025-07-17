@@ -78,6 +78,5 @@ class CountryTableViewCell: UITableViewCell {
         [countryLabel, characterLabel].forEach {
             $0?.asColor(targetString: keyword, color: .systemBlue)
         }
-
     }
 }

@@ -12,7 +12,7 @@ final class TravelTableViewController: UITableViewController {
 
     var dataManager = DataManager()
 
-//    let totalData = DataManager().travelInfo.travel
+    let totalData = DataManager().travelInfo.travel
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ final class TravelTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let totalData = dataManager.travelInfo.travel
+//        let totalData = dataManager.travelInfo.travel
 
         if totalData[indexPath.row].ad == false {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TravelCell", for: indexPath) as? TravelCell else { return .init() }
@@ -60,7 +60,7 @@ final class TravelTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let totalData = dataManager.travelInfo.travel
+//        let totalData = dataManager.travelInfo.travel
 
         let data = totalData[indexPath.row]
         if !data.ad {
@@ -91,7 +91,7 @@ final class TravelTableViewController: UITableViewController {
     }
 
     private func adIndex(_ indexPath: IndexPath) -> Int {
-        let totalData = dataManager.travelInfo.travel
+//        let totalData = dataManager.travelInfo.travel
         let adData = dataManager.adData
 
         let currentAdData = totalData[indexPath.row]
