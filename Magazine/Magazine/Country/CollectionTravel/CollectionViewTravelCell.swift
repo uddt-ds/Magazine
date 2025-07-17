@@ -32,7 +32,7 @@ final class CollectionViewTravelCell: UICollectionViewCell {
         labelStackView.axis = .vertical
         labelStackView.distribution = .fill
         labelStackView.alignment = .center
-        labelStackView.spacing = 0
+        labelStackView.spacing = 4
     }
 
     private func setupLabel() {
@@ -51,5 +51,11 @@ final class CollectionViewTravelCell: UICollectionViewCell {
 
     func configureImage(with radius: CGFloat) {
         travelImageView.layer.cornerRadius = radius
+    }
+
+    func configureLabel(keyword: String) {
+        [mainLabel, descriptionLabel].forEach {
+            $0?.asColor(targetString: keyword, color: .blue)
+        }
     }
 }

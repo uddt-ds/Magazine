@@ -47,7 +47,7 @@ final class CollectionTravelViewController: UIViewController {
     }
 
     private func setupNavigation() {
-        let image = UIImage(systemName: "chevron.backward")
+        let image = UIImage(systemName: "xmark")
         navigationItem.title = "인기 도시"
         navigationController?.navigationBar.scrollEdgeAppearance = .init()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(leftButtonTapped))
@@ -174,6 +174,7 @@ extension CollectionTravelViewController: UICollectionViewDataSource, UICollecti
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CollectionViewTravelCell.self), for: indexPath) as? CollectionViewTravelCell else { return .init() }
         cell.configureCell(with: data[indexPath.item])
         cell.configureImage(with: CGFloat(weight) / 2)
+        cell.configureLabel(keyword: searchTextField.text ?? "")
         return cell
     }
 }
