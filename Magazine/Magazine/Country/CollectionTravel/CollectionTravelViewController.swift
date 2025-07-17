@@ -22,7 +22,6 @@ final class CollectionTravelViewController: UIViewController {
     let totalData = CityInfo().city
     var data = CityInfo().city
 
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.isTabBarHidden = true
@@ -48,15 +47,21 @@ final class CollectionTravelViewController: UIViewController {
     }
 
     private func setupNavigation() {
+        let image = UIImage(systemName: "chevron.backward")
         navigationItem.title = "인기 도시"
         navigationController?.navigationBar.scrollEdgeAppearance = .init()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(leftButtonTapped))
+        navigationItem.leftBarButtonItem?.tintColor = .black
     }
 
     private func setupSegMenu() {
         segMenu.selectedSegmentIndex = 0
-        segMenu.setTitle(SegCase.total.title, forSegmentAt: SegCase.total.rawValue)
-        segMenu.setTitle(SegCase.domestic.title, forSegmentAt: SegCase.domestic.rawValue)
-        segMenu.insertSegment(withTitle: SegCase.oversea.title, at: SegCase.oversea.rawValue, animated: true)
+        segMenu.setTitle(SegCase.total.title,
+                         forSegmentAt: SegCase.total.rawValue)
+        segMenu.setTitle(SegCase.domestic.title,
+                         forSegmentAt: SegCase.domestic.rawValue)
+        segMenu.insertSegment(withTitle: SegCase.oversea.title,
+                              at: SegCase.oversea.rawValue, animated: true)
         segMenu.tintColor = .black
     }
 
@@ -94,6 +99,16 @@ final class CollectionTravelViewController: UIViewController {
         return layout
     }
 
+    @objc
+    func leftButtonTapped(_ sender: UIBarButtonItem) {
+        print(#function)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: String(describing: MagazineTableViewController.self))
+        //TODO: overFullScreen, overCurrentContext 차이 확인해보기
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true)
+    }
+
 
     @IBAction func segmentedTapped(_ sender: UISegmentedControl) {
 
@@ -119,6 +134,7 @@ final class CollectionTravelViewController: UIViewController {
         }
 
         let nonSpacedKeyword = userInput.trimmingCharacters(in: .whitespaces)
+        let upperKeyword = nonSpacedKeyword.uppercased()
 
         switch segMenu.selectedSegmentIndex {
         case SegCase.total.rawValue:
@@ -134,7 +150,7 @@ final class CollectionTravelViewController: UIViewController {
         data = data.filter({
             $0.cityName == nonSpacedKeyword ||
             $0.cityEnglishName == nonSpacedKeyword ||
-            $0.upperKeyword == nonSpacedKeyword ||
+            $0.upperKeyword == upperKeyword ||
             $0.cityExplain.contains(nonSpacedKeyword)
         })
 
